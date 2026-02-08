@@ -1,5 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
+import { Auth } from "./auth.model.js";
+import { Product } from "./product.model.js";
 
 export class Saved extends Model {
   declare id: number;
@@ -35,3 +37,11 @@ Saved.init(
     ],
   }
 );
+
+
+Auth.hasMany(Saved, { foreignKey: "userId" });
+Saved.belongsTo(Auth, { foreignKey: "userId" });
+
+
+Product.hasMany(Saved, { foreignKey: "productId" });
+Saved.belongsTo(Product, { foreignKey: "productId" });

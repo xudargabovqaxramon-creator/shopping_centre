@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
+import { Order } from "./order.model.js";
 export class OrderItem extends Model {
 }
 OrderItem.init({
@@ -29,4 +30,6 @@ OrderItem.init({
     sequelize,
     timestamps: false,
 });
+Order.hasMany(OrderItem, { foreignKey: "orderId" });
+OrderItem.belongsTo(Order, { foreignKey: "orderId" });
 //# sourceMappingURL=order-item.js.map

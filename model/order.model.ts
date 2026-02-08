@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
+import { Auth } from "./auth.model.js";
 
 export class Order extends Model {
   declare id: number;
@@ -48,3 +49,7 @@ Order.init(
     
   }
 );
+
+
+Auth.hasMany(Order, { foreignKey: "userId" });
+Order.belongsTo(Auth, { foreignKey: "userId" });

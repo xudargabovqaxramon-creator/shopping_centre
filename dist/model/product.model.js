@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/config.js";
+import { Category } from "./category.model.js";
 export class Product extends Model {
 }
 Product.init({
@@ -43,4 +44,6 @@ Product.init({
         }
     ]
 });
+Category.hasMany(Product, { foreignKey: "category_id" });
+Product.belongsTo(Category, { foreignKey: "category_id" });
 //# sourceMappingURL=product.model.js.map
