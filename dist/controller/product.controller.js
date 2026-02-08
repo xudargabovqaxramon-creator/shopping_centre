@@ -28,7 +28,8 @@ export const getoneProduct = async (req, res, next) => {
 export const createProduct = async (req, res, next) => {
     try {
         const { title, description, price, image, quantity, category_id } = req.body;
-        const category = await Category.findByPk(category_id);
+        const category = await Category.findAll({ where: { id: category_id } });
+        console.log();
         if (!category) {
             throw CustomErrorHandler.NotFound("Category not found");
         }
