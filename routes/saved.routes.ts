@@ -5,7 +5,7 @@ const SavedRouter= Router()
 
 
 SavedRouter.post("/saved/:productId",authMiddleware, saveProduct)
-SavedRouter.put("/get_saved",authMiddleware,getSavedProducts)
+SavedRouter.get("/get_saved",authMiddleware,getSavedProducts)
 SavedRouter.delete("/remove/:productId",authMiddleware,removeSavedProduct)
 
 export default SavedRouter
