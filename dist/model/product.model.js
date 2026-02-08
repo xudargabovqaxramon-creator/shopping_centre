@@ -38,7 +38,8 @@ Product.init({
     timestamps: true,
     indexes: [
         {
-            unique: true
+            unique: true,
+            fields: ["title"]
         }
     ]
 });
