@@ -8,11 +8,7 @@ import type { LoginDto, RegisterDto, VerifyDto } from "../dto/auth.dto.js";
 import { sendTokens } from "../utils/send-token.js";
 
 //================= REGISTER
-export const register = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const register = async (  req: Request,res: Response,next: NextFunction) => {
   try {
     const dto = req.body as RegisterDto;
 
@@ -50,11 +46,7 @@ export const register = async (
 };
 
 //================= VERIFY OTP 
-export const verify = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const verify = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const dto = req.body as VerifyDto;
 
@@ -100,11 +92,7 @@ export const verify = async (
 };
 
 // ================= RESEND OTP
-export const resendCode = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const resendCode = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const { email } = req.body as { email: string };
 
@@ -133,11 +121,7 @@ export const resendCode = async (
 };
 
 //  ================= LOGIN
-export const login = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const login = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const dto = req.body as LoginDto;
 

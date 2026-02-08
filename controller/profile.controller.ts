@@ -4,11 +4,7 @@ import { Auth } from "../model/auth.model.js";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 
 //========== UPDATE PROFILE 
-export const updateMe = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateMe = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const userId = (req as any).user.id as number;
     const { full_name, avatar } = req.body as {
@@ -38,11 +34,7 @@ export const updateMe = async (
 };
 
 //========== GET ME 
-export const getMe = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getMe = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const userId = (req as any).user.id as number;
 
@@ -61,11 +53,7 @@ export const getMe = async (
 };
 
 //========== LOGOUT 
-export const logout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const logout = async (req: Request,res: Response, next: NextFunction) => {
   try {
     res.clearCookie("access_token");
     res.clearCookie("refresh_token");
@@ -77,11 +65,7 @@ export const logout = async (
 };
 
 //========== FORGOT PASSWORD 
-export const forgotPassword = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const forgotPassword = async ( req: Request,res: Response,  next: NextFunction) => {
   try {
     const { email, otp, new_password } = req.body as {
       email: string;
@@ -123,11 +107,7 @@ export const forgotPassword = async (
 };
 
 //========== CHANGE PASSWORD 
-export const changePassword = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const changePassword = async (  req: Request,res: Response, next: NextFunction) => {
   try {
     const userId = (req as any).user.id as number;
     const { current_password, new_password, confirm_password } = req.body as {

@@ -49,11 +49,7 @@ export const createCategory = async (req: Request, res: Response, next: NextFunc
 };
 
 
-export const updateCategory = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateCategory = async (req: Request,res: Response,next: NextFunction) => {
   try {
     const id = Number(req.params.id);
     const { name, image } = req.body as UpdateCategoryDTO;

@@ -4,11 +4,7 @@ import { Product } from "../model/product.model.js";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 import type { AuthRequest } from "../middleware/authorization.middleware.js";
 
-export const saveProduct = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const saveProduct = async (req: AuthRequest,res: Response,next: NextFunction) => {
   try {
     const userId = Number(req.user!.id);
     const productId = Number(req.params.productId);
@@ -36,11 +32,7 @@ export const saveProduct = async (
 };
 
 
-export const getSavedProducts = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const getSavedProducts = async (req: AuthRequest,res: Response, next: NextFunction) => {
   try {
     const userId = req.user!.id;
 
@@ -57,11 +49,7 @@ export const getSavedProducts = async (
   }
 };
 
-export const removeSavedProduct = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const removeSavedProduct = async (req: AuthRequest,res: Response,next: NextFunction) => {
   try {
     const userId = req.user!.id;
     const productId = Number(req.params.productId);

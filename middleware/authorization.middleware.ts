@@ -3,15 +3,17 @@ import jwt from "jsonwebtoken";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 import type { TokenPayload } from "../utils/jwt.js";
 
-export interface AuthRequest extends Request {
-  user?: TokenPayload;
+export interface AuthUserPayload {
+  id: number;
+  role: string;
+  email: string;
 }
 
-export const authMiddleware = (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export interface AuthRequest extends Request {
+  user?: AuthUserPayload;
+}
+
+export const authMiddleware = (req: AuthRequest,res: Response,next: NextFunction) => {
   try {
     const access_token = req.cookies?.access_token;
 

@@ -2,11 +2,7 @@ import type { Response, NextFunction } from "express";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 import type { AuthRequest } from "./authorization.middleware.js";
 
-export const adminMiddleware = (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const adminMiddleware = (req: AuthRequest,res: Response,next: NextFunction) => {
   try {
     // authMiddleware oldin ishlagan bo‘lishi shart
     if (!req.user) {
