@@ -1,11 +1,12 @@
 
+import type { AuthRequest } from "../middleware/authorization.middleware.js";
 import { OrderItem } from "../model/order-item.js";
 import { Order } from "../model/order.model.js";
 import { Product } from "../model/product.model.js";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 import type { NextFunction, Request, Response } from "express";
 export const createOrder = async (
-  req: Request,
+  req: AuthRequest,
   res: Response,
   next: NextFunction
 )=> {
@@ -47,12 +48,14 @@ export const createOrder = async (
 
     for (const item of items) {
       const product = await Product.findByPk(item.productId);
+      if (product) {
       await OrderItem.create({
         orderId: order.id,
         productId: item.productId,
         quantity: item.quantity,
         price: product.price,
       });
+      }
     }
 
     res.status(201).json({
