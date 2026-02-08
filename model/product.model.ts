@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/config.js";
-import { Category } from "./category.model.js";
 
 export class Product extends Model {
   declare id: number;
@@ -50,7 +49,8 @@ Product.init(
     timestamps: true,
     indexes: [
       {
-        unique:true
+        unique:true,
+        fields: ["title"]
       }
     ]
   }

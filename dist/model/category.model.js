@@ -21,5 +21,10 @@ Category.init({
     tableName: "categories",
     sequelize,
     timestamps: true,
+    indexes: [
+        {
+            unique: true
+        }
+    ]
 });
 //# sourceMappingURL=category.model.js.map

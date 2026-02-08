@@ -58,5 +58,10 @@ Auth.init({
     sequelize,
     tableName: "users",
     timestamps: true,
+    indexes: [
+        {
+            unique: true
+        }
+    ]
 });
 //# sourceMappingURL=auth.model.js.map

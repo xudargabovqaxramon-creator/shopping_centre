@@ -5,11 +5,7 @@ import { Order } from "../model/order.model.js";
 import { Product } from "../model/product.model.js";
 import { CustomErrorHandler } from "../utils/custom-error-handler.js";
 import type { NextFunction, Request, Response } from "express";
-export const createOrder = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-)=> {
+export const createOrder = async (req: AuthRequest,res: Response,next: NextFunction)=> {
   try {
     if (!req.user) {
        throw CustomErrorHandler.UnAuthorized("Unauthorized");
@@ -61,6 +57,43 @@ export const createOrder = async (
     res.status(201).json({
       message: "Order created successfully",
       orderId: order.id,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const deleteOrder = async (req: AuthRequest,res: Response,next: NextFunction) => {
+  try {
+    if (!req.user) {
+      throw CustomErrorHandler.UnAuthorized("Unauthorized");
+    }
+
+    const userId = req.user.id;
+    const { orderId } = req.params;
+
+    if (orderId) {
+      throw CustomErrorHandler.NotFound("Orderid Not found")
+    }
+    const order = await Order.findByPk(orderId);
+
+    if (!order) {
+      throw CustomErrorHandler.NotFound("Order not found");
+    }
+
+    if (order.userId !== userId) {
+      throw CustomErrorHandler.Forbidden("Access denied");
+    }
+
+    await OrderItem.destroy({
+      where: { orderId: order.id },
+    });
+
+    await order.destroy();
+
+    res.status(200).json({
+      message: "Order deleted successfully",
     });
   } catch (error) {
     next(error);

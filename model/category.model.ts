@@ -30,7 +30,8 @@ Category.init(
     timestamps: true,
     indexes: [
       {
-        unique:true
+        unique:true,
+        fields:["name", "image"]
       }
     ]
   }

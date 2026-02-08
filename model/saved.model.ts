@@ -1,7 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
-import { Product } from "./product.model.js";
-import { Auth } from "./auth.model.js";
 
 export class Saved extends Model {
   declare id: number;

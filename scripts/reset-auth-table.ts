@@ -1,6 +1,5 @@
 import { Auth } from "../model/auth.model.js";
 
-
 (async () => {
   try {
     await Auth.sync({ force: true });

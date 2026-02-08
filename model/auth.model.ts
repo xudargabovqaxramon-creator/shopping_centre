@@ -83,10 +83,5 @@ Auth.init(
     sequelize,
     tableName: "users", 
     timestamps: true,
-    indexes: [
-      {
-        unique:true
-      }
-    ]
   }
 );

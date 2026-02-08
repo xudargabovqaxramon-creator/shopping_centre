@@ -1,6 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
-import { Auth } from "./auth.model.js";
 
 export class Order extends Model {
   declare id: number;

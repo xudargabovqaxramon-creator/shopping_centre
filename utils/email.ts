@@ -1,10 +1,7 @@
 import nodemailer from "nodemailer";
 import { CustomErrorHandler } from "./custom-error-handler.js";
 
-export const emailSender = async (
-  code: string,
-  email: string
-): Promise<void> => {
+export const emailSender = async (code: string, email: string): Promise<void> => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",

@@ -8,6 +8,7 @@ import CategoryRouter from "./routes/category.routes.js"
 import ProductRouter from "./routes/product.routes.js"
 import SavedRouter from "./routes/saved.routes.js"
 import cookieParser from "cookie-parser"
+import orderRouter from "./routes/order.routes.js"
 const app = express()
 dotenv.config()
 
@@ -22,6 +23,7 @@ app.use(AuthRouter)
 app.use(CategoryRouter)
 app.use(ProductRouter)
 app.use(SavedRouter)
+app.use(orderRouter)
 
 app.use(errorMiddleware)
 connectDB()

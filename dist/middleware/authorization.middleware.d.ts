@@ -1,7 +1,11 @@
 import type { Request, Response, NextFunction } from "express";
-import type { TokenPayload } from "../utils/jwt.js";
+export interface AuthUserPayload {
+    id: number;
+    role: string;
+    email: string;
+}
 export interface AuthRequest extends Request {
-    user?: TokenPayload;
+    user?: AuthUserPayload;
 }
 export declare const authMiddleware: (req: AuthRequest, res: Response, next: NextFunction) => void;
 //# sourceMappingURL=authorization.middleware.d.ts.map
